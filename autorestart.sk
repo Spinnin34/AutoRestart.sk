@@ -1,0 +1,59 @@
+options:
+    permission: restart.start
+    key: rare
+
+
+
+command /autorestart [<text>]: 
+    usage: "&c/autorestart [<type (Downtime) (Normal Restart) (Test)>] or /resnow"
+    permission: {@permission}
+    aliases: /resnow 
+    trigger:
+        send "&3&lSERVER RESTART IN 5 MINUTES" to all players
+        send "&5You be able to rejoin at &a&l&nYessirDupe.minehut.gg"
+        send "&5Or use the &a&l&nhub&5 to rejoin!"
+        send action bar "&bRestart type: %arg-1%" to all players
+        play sound "entity.player.levelup" with volume 1 at pitch 1 to all players
+        wait 1 seconds
+        send action bar "&bServer restarting in 5 Minutes!" to all players
+        wait 10 seconds
+        send action bar "&bServer restarting in 5 Minutes!" to all players
+        wait 5 minutes
+        play sound "entity.player.levelup" with volume 1 at pitch 1 to all players
+        send "&bSERVER RESTARTING IN 5 SECONDS"
+        send action bar "&bServer restarting in 5 SECONDS!" to all players
+        wait 1 seconds 
+        play sound "entity.player.levelup" with volume 1 at pitch 1 to all players
+        send "&bSERVER RESTARTING IN 4 SECONDS &9&l&nYESSIRDUPE.MINEHUT.GG"
+        send action bar "&bYESSIRDUPE.MINEHUT.GG" to all players
+        wait 1 seconds 
+        play sound "entity.player.levelup" with volume 1 at pitch 1 to all players
+        send "&bSERVER RESTARTING IN 3 SECONDS"
+        send action bar "&bYESSIRDUPE.MINEHUT.GG" to all players
+        wait 1 seconds
+        play sound "entity.player.levelup" with volume 1 at pitch 1 to all players
+        send "&bSERVER RESTARTING IN 2 SECONDS"
+        send action bar "&bYESSIRDUPE.MINEHUT.GG" to all players
+        wait 1 seconds
+        play sound "entity.experience_orb.pickup" with volume 1 at pitch 1 to player
+        send "&bSTARTING RESTART | TELEPORTING PLAYERS TO HUB"
+        send action bar "&dTeleporting to hub....." to all players
+        wait 1 seconds
+        make console execute command "/crates key giveall {@key} 1"
+        wait 0.2 seconds
+        make console execute command "/saferestart"
+        wait 1.5 seconds
+        play sound "entity.player.levelup" with volume 1 at pitch 1 to all players
+        make console execute command "/restart"
+
+
+command /Downtime [<text>]:
+    permission: {@permission}
+    trigger:
+        send "&e&lThe server will be undergoing maintenance and will be back in %arg-1%" to all players
+        send action bar "&b&Scheduled maintenance!" to all players
+        play sound "event.raid.horn" with volume 1 at pitch 1 to all players
+        wait 10 seconds
+        make console execute command "/whitelist on"
+        wait 5 seconds
+        make console execute command "/minecraft:kick @a"
